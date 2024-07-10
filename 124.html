@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AEP-124: Resource association</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=fa687442">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=fa687442">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=fa687442"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSXMVSDN');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSXMVSDN"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="API Enhancement Proposals">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AEPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AEPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aep-dev/aep.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aep-dev/aep.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aep-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AEPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item nav-item-header">AEPs</li>
+    <li class="nav-item"><b>Meta</b></li>
+      <li class="nav-item">
+          <a href="/1">
+            <span class="aep-id">1</span>
+            AEP Purpose and Guidelines
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/2">
+            <span class="aep-id">2</span>
+            AEP Numbering and Organization
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/8">
+            <span class="aep-id">8</span>
+            AEP Style and Guidance
+          </a>
+        </li>
+      <li class="nav-item"><b>General</b></li>
+      <li class="nav-item">
+          <a href="/3">
+            <span class="aep-id">3</span>
+            Glossary
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/5">
+            <span class="aep-id">5</span>
+            Designing an API
+          </a>
+        </li>
+      <li class="nav-item"><b>Resources</b></li>
+      <li class="nav-item">
+          <a href="/122">
+            <span class="aep-id">122</span>
+            Resource paths
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/126">
+            <span class="aep-id">126</span>
+            Enumerations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/4">
+            <span class="aep-id">4</span>
+            Resource types
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/121">
+            <span class="aep-id">121</span>
+            Resource-oriented design
+          </a>
+        </li>
+      <li class="nav-item nav-item-active">
+          <a href="/124">
+            <span class="aep-id">124</span>
+            Resource association
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/156">
+            <span class="aep-id">156</span>
+            Singleton resources
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/159">
+            <span class="aep-id">159</span>
+            Reading across collections
+          </a>
+        </li>
+      <li class="nav-item"><b>Standard Methods</b></li>
+      <li class="nav-item">
+          <a href="/130">
+            <span class="aep-id">130</span>
+            Methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/131">
+            <span class="aep-id">131</span>
+            Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/132">
+            <span class="aep-id">132</span>
+            List
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/136">
+            <span class="aep-id">136</span>
+            Custom methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/133">
+            <span class="aep-id">133</span>
+            Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/134">
+            <span class="aep-id">134</span>
+            Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/135">
+            <span class="aep-id">135</span>
+            Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Fields</b></li>
+      <li class="nav-item">
+          <a href="/141">
+            <span class="aep-id">141</span>
+            Quantities
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/142">
+            <span class="aep-id">142</span>
+            Time and duration
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/144">
+            <span class="aep-id">144</span>
+            Array fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/145">
+            <span class="aep-id">145</span>
+            Ranges
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/140">
+            <span class="aep-id">140</span>
+            Field names
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/146">
+            <span class="aep-id">146</span>
+            Generic fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/148">
+            <span class="aep-id">148</span>
+            Standard fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/203">
+            <span class="aep-id">203</span>
+            Field behavior documentation
+          </a>
+        </li>
+      <li class="nav-item"><b>Types</b></li>
+      <li class="nav-item">
+          <a href="/210">
+            <span class="aep-id">210</span>
+            Unicode
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/143">
+            <span class="aep-id">143</span>
+            Standardized codes
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/213">
+            <span class="aep-id">213</span>
+            Common components
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/215">
+            <span class="aep-id">215</span>
+            Common component versions
+          </a>
+        </li>
+      <li class="nav-item"><b>Design Patterns</b></li>
+      <li class="nav-item">
+          <a href="/154">
+            <span class="aep-id">154</span>
+            Resource freshness validation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/158">
+            <span class="aep-id">158</span>
+            Pagination
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/151">
+            <span class="aep-id">151</span>
+            Long-running operations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/164">
+            <span class="aep-id">164</span>
+            Soft delete
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/211">
+            <span class="aep-id">211</span>
+            Authorization checks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/157">
+            <span class="aep-id">157</span>
+            Partial responses
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/160">
+            <span class="aep-id">160</span>
+            Filtering
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/161">
+            <span class="aep-id">161</span>
+            Field masks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/162">
+            <span class="aep-id">162</span>
+            Resource Revisions
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/193">
+            <span class="aep-id">193</span>
+            Errors
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/214">
+            <span class="aep-id">214</span>
+            Resource expiration
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/216">
+            <span class="aep-id">216</span>
+            States
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/217">
+            <span class="aep-id">217</span>
+            Unreachable resources
+          </a>
+        </li>
+      <li class="nav-item"><b>Batch Methods</b></li>
+      <li class="nav-item">
+          <a href="/231">
+            <span class="aep-id">231</span>
+            Batch methods: Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/233">
+            <span class="aep-id">233</span>
+            Batch methods: Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/234">
+            <span class="aep-id">234</span>
+            Batch methods: Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/235">
+            <span class="aep-id">235</span>
+            Batch methods: Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Security</b></li>
+      <li class="nav-item"><b>Governance</b></li>
+      <li class="nav-item">
+          <a href="/100">
+            <span class="aep-id">100</span>
+            API Design Review FAQ
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/205">
+            <span class="aep-id">205</span>
+            Beta-blocking changes
+          </a>
+        </li>
+      <li class="nav-item"><b>Best Practices</b></li>
+      <li class="nav-item">
+          <a href="/180">
+            <span class="aep-id">180</span>
+            Backwards compatibility
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/181">
+            <span class="aep-id">181</span>
+            Stability levels
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/192">
+            <span class="aep-id">192</span>
+            Documentation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/200">
+            <span class="aep-id">200</span>
+            Precedent
+          </a>
+        </li>
+      <li class="nav-item"><b>Protocol buffers</b></li>
+      <li class="nav-item">
+          <a href="/127">
+            <span class="aep-id">127</span>
+            HTTP and gRPC Transcoding
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/191">
+            <span class="aep-id">191</span>
+            File and directory structure
+          </a>
+        </li>
+      </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aep-sidebar" class="docs-component-sidebar">
+  <table id="aep-summary">
+    <tr><th colspan="2">Resource association</th></tr>
+    <tr><td>Slug</td><td>association</td></tr>
+    <tr><td>Number</td><td>124</td></tr>
+    <tr><td>Permalink</td><td><a href="https://aep.dev/124">aep.dev/124</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2023-01-22</td></tr>
+    <tr><td>Updated</td><td>2023-01-22</td></tr>
+  </table>
+
+  <section id="aep-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#multiple-many-to-one-associations">Multiple many-to-one associations</a></li>
+<li><a href="#many-to-many-associations">Many-to-many associations</a></li>
+<li><a href="#embedded-resources">Embedded resources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aep-dev/aep.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/blob/master/aep/general/0124">View source</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/edit/master/aep/general/0124">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aep-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aep-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Enhancement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AEPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Resource association
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aep-id">association (AEP-124)</h4>
+  <h1 id="resource-association">Resource association</h1>
+<p>APIs sometimes have resource relationships that can not be cleanly expressed in
+a hierarchical structure. For example, a resource may have a many-to-one
+relationship with two other resource types instead of just one. Alternatively,
+a resource may have a many-to-many relationship with another resource type.</p>
+<h2 id="guidance">Guidance</h2>
+<p>A resource <strong>must</strong> have at most one canonical parent, and <code>List</code> requests
+<strong>must not</strong> require two distinct "parents".</p>
+<h3 id="multiple-many-to-one-associations">Multiple many-to-one associations</h3>
+<p>If a resource has a many-to-one relationship with multiple resource types, it
+<strong>must</strong> choose at most one of them to be the parent. The resource <strong>may</strong> be
+associated with other resources through other fields on the resource.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The resource path pattern for Book indicates that Publisher is the</span>
+<span class="w">  </span><span class="c1">// canonical parent.</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// The resource path for the book.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
+
+<span class="w">  </span><span class="c1">// The resource name for the book&#39;s author.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Author&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">OpenAPI 3.0</label><div class="tabbed-content">
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">Book</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A representation of a single book.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The path of the book.</span><span class="w"></span>
+<span class="w">        </span><span class="no">Format: publishers/{publisher}/books/{book}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">author</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The author or authors of the book.</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+<p>When listing resources with multiple associations in this way, the RPC <strong>must</strong>
+treat the <code>string parent</code> field as required as discussed in <a href="/list">list</a>, and
+<strong>must not</strong> add additional required arguments. The RPC <strong>should</strong> include a
+<code>string filter</code> field that allows users to filter by other resource
+associations as discussed in <a href="/filtering">filtering</a>.</p>
+<p><strong>Note:</strong> Resource reference fields <strong>must</strong> accept the
+<a href="/resource-path">resource path</a> of the referenced resource.</p>
+<h3 id="many-to-many-associations">Many-to-many associations</h3>
+<p>Many-to-many associations are less common in APIs than they are in relational
+databases, in part because they are more difficult to model and present over
+network interfaces.</p>
+<p>An API <strong>may</strong> contain many-to-many relationships, and <strong>should</strong> use a
+repeated field containing a list of resource paths, following the principles
+described for repeated fields in [arrays][/arrays].</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
+
+<span class="w">  </span><span class="c1">// The resource paths for the book&#39;s authors.</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Author&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">OpenAPI 3.0</label><div class="tabbed-content">
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">Book</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A representation of a single book.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The path of the book.</span><span class="w"></span>
+<span class="w">        </span><span class="no">Format: publishers/{publisher}/books/{book}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">authors</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<span class="w">      </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The author or authors of the book.</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+<p><strong>Note:</strong> See <a href="/arrays">arrays</a> for more information on repeated fields,
+including how to handle common issues such as atomic changes.</p>
+<p>If the use of a repeated field is too restrictive, or if more metadata is
+required along with the association, an API <strong>may</strong> model a many-to-many
+relationship using a sub-resource with two one-to-many associations.</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">BookAuthor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The resource pattern for BookAuthor indicates that Book is the</span>
+<span class="w">  </span><span class="c1">// canonical parent.</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/BookAuthor&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}/authors/{book_author}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// The resource path for the book-author association.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
+
+<span class="w">  </span><span class="c1">// The resource path for the author.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Author&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
+
+<span class="w">  </span><span class="c1">// Other fields...</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">OpenAPI 3.0</label><div class="tabbed-content">
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">BookAuthor</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A representation of a book being written by an author.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The path of the book.</span><span class="w"></span>
+<span class="w">        </span><span class="no">Format: publishers/{publisher}/books/{book}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">authors</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The author of the book.</span><span class="w"></span>
+<span class="w">        </span><span class="no">Format publishers/{publishers}/authors/{author}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+<p><strong>Note:</strong> Using subresources to model an association between resources is only
+recommended if additional metadata is required in the relationship, or if the
+restrictions around the use of a repeated field preclude the use of that
+approach.</p>
+<h3 id="embedded-resources">Embedded resources</h3>
+<p>Resource references as described use string references rather than embedding
+one resource inside another because embedding resources can lead to a number of
+issues. Retrieving resources with arbitrarily deep nesting may require multiple
+serial internal RPCs, leading to complex service dependencies, latency, and
+reliability issues.</p>
+<p>However, sometimes dereferencing resource references is useful, or even
+necessary.</p>
+<p>For example, an API may wish to allow filtering of a resource based on a field
+of a resource it references. This can be necessary in order to satisfy a query
+expressing something like "list books written by authors who were born before
+1950", where the author's birth date is a field on the <code>Author</code> resource
+referenced by the <code>Book</code> resource.</p>
+<p>In other cases, it may be much cheaper and/or faster for the server to perform
+the dereferencing than for the client to make multiple serial requests.</p>
+<p>In these cases, an alternative resource association pattern <strong>may</strong> be used,
+where the resource reference field is not a string, but is instead the
+referenced resource itself.</p>
+<p>The default behavior <strong>should</strong> be to populate only the <code>path</code> field of the
+referenced resource, making it equivalent to a string-based resource reference.
+Additional fields <strong>may</strong> be included based on the request: for example, if the
+request includes a <a href="./partial-responses">view or read mask</a> that specifies that
+additional fields should be included, or if the request contains a filter that
+specifies fields other than <code>path</code> within the referenced resource.</p>
+<p>Fields other than <code>path</code> in embedded resource references <strong>must</strong> be treated as
+<a href="./field-behavior">output-only</a>; mutating API methods <strong>must not</strong> allow
+creating or mutation of embedded resources. For example, if a <code>Book</code> resource
+has an embedded resource reference to <code>Author</code>, the <code>UpdateBook</code> method <strong>must
+not</strong> allow updating any fields of the <code>Author</code> resource other than
+<code>Author.path</code> (which updates the reference itself, rather than the referenced
+resource).</p>
+<p>APIs <strong>must</strong> always fully document their behavior with embedded resources,
+even if the only supported behavior is populating only the <code>path</code> field. If the
+referenced resource itself contains embedded resources, the API <strong>must</strong>
+include clear documentation about the depth to which embedded resources may be
+dereferenced.</p>
+<p><strong>Note:</strong> There is no need for the <em>referenced</em> resource to define a
+<code>PATH_ONLY</code> <a href="./partial-responses">view</a> corresponding to the default behavior
+of populating only the <code>path</code> field. This is because a resource should not have
+to define a view enum simply because another resource references it.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The resource path pattern for Book indicates that Publisher is the</span>
+<span class="w">  </span><span class="c1">// canonical parent.</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.resource</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Book&quot;</span>
+<span class="w">    </span><span class="n">pattern</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;publishers/{publisher}/books/{book}&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// The resource path for the book.</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDENTIFIER</span><span class="p">];</span>
+
+<span class="w">  </span><span class="c1">// The resource path of the book&#39;s author.</span>
+<span class="w">  </span><span class="c1">//</span>
+<span class="w">  </span><span class="c1">// By default, only the `path` field of the author is populated.</span>
+<span class="w">  </span><span class="c1">// However, the full author can be retrieved by specifying the </span>
+<span class="w">  </span><span class="c1">// FULL_WITH_AUTHOR view. This **will not** dereference resource</span>
+<span class="w">  </span><span class="c1">// references within the author, such as `Author.pen_names`; only</span>
+<span class="w">  </span><span class="c1">// the `path` subfield of these fields will be populated.</span>
+<span class="w">  </span><span class="n">Author</span><span class="w"> </span><span class="na">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.googleapis.com/Author&quot;</span>
+<span class="w">  </span><span class="p">}];</span>
+
+<span class="w">  </span><span class="c1">// Different views of a book.</span>
+<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// The default view.</span>
+<span class="w">    </span><span class="na">VIEW_UNSPECIFIED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Includes all fields, but does not derefefence the author.</span>
+<span class="w">    </span><span class="na">FULL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Includes all fields and also fully populates author.</span>
+<span class="w">    </span><span class="na">FULL_WITH_AUTHOR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">OpenAPI 3.0</label><div class="tabbed-content">
+<div class="highlight language-yaml"><pre><span></span><code><span class="nt">Book</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A representation of a single book.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The path of the book.</span><span class="w"></span>
+<span class="w">        </span><span class="no">Format: publishers/{publisher}/books/{book}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">author</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;#/components/schemas/Author&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">        </span><span class="no">The author or authors of the book.</span><span class="w"></span>
+
+<span class="w">        </span><span class="no">By default, only the `path` field of the author is populated.</span><span class="w"></span>
+<span class="w">        </span><span class="no">However, the full author can be retrieved by specifying the</span><span class="w"></span>
+<span class="w">        </span><span class="no">FULL_WITH_AUTHOR view. This **will not** dereference resource</span><span class="w"></span>
+<span class="w">        </span><span class="no">references within the author, such as `Author.pen_names`; only</span><span class="w"></span>
+<span class="w">        </span><span class="no">the `path` subfield of these fields will be populated.</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+<!-- prettier-ignore-start -->
+<!-- prettier-ignore-end -->
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

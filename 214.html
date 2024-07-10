@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AEP-214: Resource expiration</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=fa687442">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=fa687442">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=fa687442"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSXMVSDN');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSXMVSDN"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="API Enhancement Proposals">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AEPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AEPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aep-dev/aep.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aep-dev/aep.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aep-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AEPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item nav-item-header">AEPs</li>
+    <li class="nav-item"><b>Meta</b></li>
+      <li class="nav-item">
+          <a href="/1">
+            <span class="aep-id">1</span>
+            AEP Purpose and Guidelines
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/2">
+            <span class="aep-id">2</span>
+            AEP Numbering and Organization
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/8">
+            <span class="aep-id">8</span>
+            AEP Style and Guidance
+          </a>
+        </li>
+      <li class="nav-item"><b>General</b></li>
+      <li class="nav-item">
+          <a href="/3">
+            <span class="aep-id">3</span>
+            Glossary
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/5">
+            <span class="aep-id">5</span>
+            Designing an API
+          </a>
+        </li>
+      <li class="nav-item"><b>Resources</b></li>
+      <li class="nav-item">
+          <a href="/122">
+            <span class="aep-id">122</span>
+            Resource paths
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/126">
+            <span class="aep-id">126</span>
+            Enumerations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/4">
+            <span class="aep-id">4</span>
+            Resource types
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/121">
+            <span class="aep-id">121</span>
+            Resource-oriented design
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/124">
+            <span class="aep-id">124</span>
+            Resource association
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/156">
+            <span class="aep-id">156</span>
+            Singleton resources
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/159">
+            <span class="aep-id">159</span>
+            Reading across collections
+          </a>
+        </li>
+      <li class="nav-item"><b>Standard Methods</b></li>
+      <li class="nav-item">
+          <a href="/130">
+            <span class="aep-id">130</span>
+            Methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/131">
+            <span class="aep-id">131</span>
+            Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/132">
+            <span class="aep-id">132</span>
+            List
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/136">
+            <span class="aep-id">136</span>
+            Custom methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/133">
+            <span class="aep-id">133</span>
+            Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/134">
+            <span class="aep-id">134</span>
+            Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/135">
+            <span class="aep-id">135</span>
+            Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Fields</b></li>
+      <li class="nav-item">
+          <a href="/141">
+            <span class="aep-id">141</span>
+            Quantities
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/142">
+            <span class="aep-id">142</span>
+            Time and duration
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/144">
+            <span class="aep-id">144</span>
+            Array fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/145">
+            <span class="aep-id">145</span>
+            Ranges
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/140">
+            <span class="aep-id">140</span>
+            Field names
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/146">
+            <span class="aep-id">146</span>
+            Generic fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/148">
+            <span class="aep-id">148</span>
+            Standard fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/203">
+            <span class="aep-id">203</span>
+            Field behavior documentation
+          </a>
+        </li>
+      <li class="nav-item"><b>Types</b></li>
+      <li class="nav-item">
+          <a href="/210">
+            <span class="aep-id">210</span>
+            Unicode
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/143">
+            <span class="aep-id">143</span>
+            Standardized codes
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/213">
+            <span class="aep-id">213</span>
+            Common components
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/215">
+            <span class="aep-id">215</span>
+            Common component versions
+          </a>
+        </li>
+      <li class="nav-item"><b>Design Patterns</b></li>
+      <li class="nav-item">
+          <a href="/154">
+            <span class="aep-id">154</span>
+            Resource freshness validation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/158">
+            <span class="aep-id">158</span>
+            Pagination
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/151">
+            <span class="aep-id">151</span>
+            Long-running operations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/164">
+            <span class="aep-id">164</span>
+            Soft delete
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/211">
+            <span class="aep-id">211</span>
+            Authorization checks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/157">
+            <span class="aep-id">157</span>
+            Partial responses
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/160">
+            <span class="aep-id">160</span>
+            Filtering
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/161">
+            <span class="aep-id">161</span>
+            Field masks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/162">
+            <span class="aep-id">162</span>
+            Resource Revisions
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/193">
+            <span class="aep-id">193</span>
+            Errors
+          </a>
+        </li>
+      <li class="nav-item nav-item-active">
+          <a href="/214">
+            <span class="aep-id">214</span>
+            Resource expiration
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/216">
+            <span class="aep-id">216</span>
+            States
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/217">
+            <span class="aep-id">217</span>
+            Unreachable resources
+          </a>
+        </li>
+      <li class="nav-item"><b>Batch Methods</b></li>
+      <li class="nav-item">
+          <a href="/231">
+            <span class="aep-id">231</span>
+            Batch methods: Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/233">
+            <span class="aep-id">233</span>
+            Batch methods: Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/234">
+            <span class="aep-id">234</span>
+            Batch methods: Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/235">
+            <span class="aep-id">235</span>
+            Batch methods: Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Security</b></li>
+      <li class="nav-item"><b>Governance</b></li>
+      <li class="nav-item">
+          <a href="/100">
+            <span class="aep-id">100</span>
+            API Design Review FAQ
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/205">
+            <span class="aep-id">205</span>
+            Beta-blocking changes
+          </a>
+        </li>
+      <li class="nav-item"><b>Best Practices</b></li>
+      <li class="nav-item">
+          <a href="/180">
+            <span class="aep-id">180</span>
+            Backwards compatibility
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/181">
+            <span class="aep-id">181</span>
+            Stability levels
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/192">
+            <span class="aep-id">192</span>
+            Documentation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/200">
+            <span class="aep-id">200</span>
+            Precedent
+          </a>
+        </li>
+      <li class="nav-item"><b>Protocol buffers</b></li>
+      <li class="nav-item">
+          <a href="/127">
+            <span class="aep-id">127</span>
+            HTTP and gRPC Transcoding
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/191">
+            <span class="aep-id">191</span>
+            File and directory structure
+          </a>
+        </li>
+      </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aep-sidebar" class="docs-component-sidebar">
+  <table id="aep-summary">
+    <tr><th colspan="2">Resource expiration</th></tr>
+    <tr><td>Slug</td><td>expiration</td></tr>
+    <tr><td>Number</td><td>214</td></tr>
+    <tr><td>Permalink</td><td><a href="https://aep.dev/214">aep.dev/214</a></td></tr>
+    <tr><td>State</td><td>Reviewing</td></tr>
+    <tr><td>Created</td><td>2024-03-14</td></tr>
+    <tr><td>Updated</td><td>2024-03-14</td></tr>
+  </table>
+
+  <section id="aep-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#rationale">Rationale</a><ul>
+<li><a href="#alternatives-considered">Alternatives considered</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aep-dev/aep.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/blob/master/aep/general/0214">View source</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/edit/master/aep/general/0214">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aep-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aep-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Enhancement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AEPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        Resource expiration
+      </li>
+    </ol>
+  </nav>
+</section>
+  <p id="aep-state-banner" class="callout note">
+  This AEP is currently under review. This means that the editors have read it
+  and are in high-level concurrence, and while it is not yet fully approved, we
+  have a good faith expectation that the AEP will be approved in something
+  close to its current state.
+</p>
+  <h4 class="aep-id">expiration (AEP-214)</h4>
+  <h1 id="resource-expiration">Resource expiration</h1>
+<p>Customers often want to provide the time that a given resource or resource
+attribute is no longer useful or valid (e.g. a rotating security key). Currently
+we recommend that customers do this by specifying an exact "expiration time"
+into a <code>Timestamp expire_time</code> field; however, this adds
+additional strain on the user when they want to specify a relative time offset
+until expiration rather than a specific time until expiration.</p>
+<p>Furthermore, the world understands the concept of a "time-to-live", often
+abbreviated to TTL, but the typical format of this field (an integer, measured
+in seconds) results in a sub-par experience when using an auto-generated client
+library.</p>
+<h2 id="guidance">Guidance</h2>
+<ol>
+<li>APIs wishing to convey an expiration <strong>must</strong> rely on a
+    <code>Timestamp</code> field called <code>expire_time</code>.</li>
+<li>APIs wishing to allow a relative expiration time must define a <code>oneof</code>
+    called <code>expiration</code> (or <code>{something}_expiration</code>) containing both the
+    <code>expire_time</code> field and a separate <code>Duration</code>
+    field called <code>ttl</code>, the latter marked as input only.</li>
+<li>APIs <strong>must</strong> always return the expiration time in the <code>expire_time</code> field
+    and leave the <code>ttl</code> field blank when retrieving the resource.</li>
+<li>APIs that rely on the specific semantics of a "time to live" (e.g., DNS
+    which must represent the TTL as an integer) <strong>may</strong> use an <code>int64 ttl</code>
+    field (and <strong>should</strong> provide an <a href="/200">aep.dev/not-precedent</a> comment
+    in this case).</li>
+</ol>
+<h3 id="example">Example</h3>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">ExpiringResource</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// google.api.resource and other annotations and fields</span>
+
+<span class="w">  </span><span class="k">oneof</span><span class="w"> </span><span class="n">expiration</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Timestamp in UTC of when this resource is considered expired.</span>
+<span class="w">    </span><span class="c1">// This is *always* provided on output, regardless of what was sent</span>
+<span class="w">    </span><span class="c1">// on input.</span>
+<span class="w">    </span><span class="n">google.protobuf.Timestamp</span><span class="w"> </span><span class="na">expire_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Input only. The TTL for this resource.</span>
+<span class="w">    </span><span class="n">google.protobuf.Duration</span><span class="w"> </span><span class="na">ttl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">[(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INPUT_ONLY</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">OpenAPI 3.0</label><div class="tabbed-content">
+<p><strong>Note:</strong>  OAS content not yet written.</p>
+</div>
+</div>
+<h2 id="rationale">Rationale</h2>
+<h3 id="alternatives-considered">Alternatives considered</h3>
+<h4 id="a-new-standard-field-called-ttl">A new standard field called <code>ttl</code></h4>
+<p>We considered allowing a standard field called <code>ttl</code> as an alternative way of
+defining the expiration, however doing so would require that API services
+continually update the field, like a clock counting down. This could
+potentially cause problems with the read-modify-write lifecycle where a
+resource is being processed for some time, and effectively has its life
+extended as a result of that processing time.</p>
+<h4 id="always-use-expire_time">Always use <code>expire_time</code></h4>
+<p>This is the current state of the world with a few exceptions. In this scenario,
+we could potentially push the computation of <code>now + ttl = expire_time</code> into
+client libraries; however, this leads to a somewhat frustrating experience in
+the command-line and using REST/JSON. Leaving things as they are is typically
+the default, but it seems many customers want the ability to define relative
+expiration times as it is quite a bit easier and removes questions of time
+zones, stale clocks, and other silly mistakes.</p>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>

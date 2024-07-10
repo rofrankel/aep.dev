@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-US" class="glue-flexbox">
+  <head>
+    <title>AEP-216: States</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700|Google+Sans:400,500|Product+Sans:400&amp;lang=en" rel="stylesheet"></link>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="//www.gstatic.com/glue/v22_1/glue.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css?v=fa687442">
+    <link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css?v=fa687442">
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="//www.gstatic.com/glue/latest/glue-detect.min.js"></script>
+    <script type="text/javascript">
+      $('html').css('visibility', 'hidden');
+      $.when($.ready).then(() => {
+        $('html').css('visibility', 'visible');
+      });
+    </script>
+    <script type="text/javascript" src="/assets/js/global.js?v=fa687442"></script>
+    
+<script type="text/javascript" src="/assets/js/syntax.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSXMVSDN');</script>
+    <!-- End Google Tag Manager -->
+  </head>
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSXMVSDN"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+    <!-- prettier-ignore -->
+<header class="glue-header glue-header--single">
+  <div class="glue-header__bar glue-header__bar--desktop glue-header__drawer">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="API Enhancement Proposals">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- LINK BAR-->
+      <div class="glue-header__container glue-header__container--flex-auto">
+        <nav class="glue-header__link-bar">
+          <ul id="list-1" class="glue-header__list">
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/general" aria-level="1">Browse AEPs</a>
+                </li>
+              
+            
+              
+                <li class="glue-header__item">
+                  <a class="glue-header__link" href="/contributing" aria-level="1">Contributing</a>
+                </li>
+              
+            
+          </ul>
+        </nav>
+      </div>
+      <!-- CTA-->
+      <div class="glue-header__container glue-header__container--cta">
+        <div class="glue-header__cta">
+        <div class="glue-sitesearch">
+          <form method="GET" action="/search">
+          <label for="q">Search this site</label>
+          <input class="glue-sitesearch__input" type="text" name="q" id="q"
+            placeholder="Search AEPs">
+          <button type="submit" class="glue-button glue-sitesearch__submit" title="Submit">
+            <svg role="img" class="glue-icon glue-icon--24px">
+            <use xlink:href="/assets/images/glue-icons.svg#search"></use>
+            </svg>
+          </button>
+          </form>
+        </div>
+        <a href="https://github.com/aep-dev/aep.dev" target="_blank" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile header placeholder -->
+  <div class="glue-header__bar glue-header__bar--mobile">
+    <div class="glue-header__tier">
+      <!-- LOCK up-->
+      <div class="glue-header__container">
+        <div class="glue-header__lock-up">
+          <div class="glue-header__hamburger glue-header__hamburger--first-tier">
+            <div class="glue-header__hamburger-wrapper">
+              <button type="button" class="glue-header__drawer-toggle-btn"
+                aria-controls="drawer" aria-expanded="false" aria-label="Open the navigation drawer">
+                <svg role="img" class="glue-icon glue-icon--24px"><use xlink:href="/assets/images/glue-icons.svg#menu"></use></svg>
+              </button>
+            </div>
+          </div>
+          <div class="glue-header__logo">
+            <a class="glue-header__logo-link" href="/" title="Google">
+              <div class="glue-header__logo-container">
+                <svg role="img" aria-hidden="true" class="glue-header__logo-svg">
+                  <!--<use xlink:href="/assets/images/glue-icons.svg#google-color-logo"></use>-->
+                </svg>
+              </div>
+              <p class="glue-header__logo--product">AEPs</p>
+            </a>
+          </div>
+          <!-- SKIP -->
+          <a href="#page-content" class="glue-header__skip-content">
+            <p class="glue-header__skip-content-text">Jump to Content</p>
+          </a>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div class="glue-header__container">
+        <div class="glue-header__cta">
+        <a href="https://github.com/aep-dev/aep.dev" class="glue-button glue-button--high-emphasis">
+          <img src="/assets/images/github.png" class="github-logo">
+          View on GitHub
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glue-header__drawer-backdrop"></div>
+</header>
+    <div class="glue-page">
+      
+      <main role="main" id="page-content">
+        
+<nav id="aep-nav" class="docs-component-nav">
+  <ul class="nav-list">
+    <li class="nav-item nav-item-header">AEPs by Scope</li>
+    <li class="nav-item">
+      <a href="/general">General</a>
+    </li>
+    <li class="nav-item nav-item-header">AEPs</li>
+    <li class="nav-item"><b>Meta</b></li>
+      <li class="nav-item">
+          <a href="/1">
+            <span class="aep-id">1</span>
+            AEP Purpose and Guidelines
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/2">
+            <span class="aep-id">2</span>
+            AEP Numbering and Organization
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/8">
+            <span class="aep-id">8</span>
+            AEP Style and Guidance
+          </a>
+        </li>
+      <li class="nav-item"><b>General</b></li>
+      <li class="nav-item">
+          <a href="/3">
+            <span class="aep-id">3</span>
+            Glossary
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/5">
+            <span class="aep-id">5</span>
+            Designing an API
+          </a>
+        </li>
+      <li class="nav-item"><b>Resources</b></li>
+      <li class="nav-item">
+          <a href="/122">
+            <span class="aep-id">122</span>
+            Resource paths
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/126">
+            <span class="aep-id">126</span>
+            Enumerations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/4">
+            <span class="aep-id">4</span>
+            Resource types
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/121">
+            <span class="aep-id">121</span>
+            Resource-oriented design
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/124">
+            <span class="aep-id">124</span>
+            Resource association
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/156">
+            <span class="aep-id">156</span>
+            Singleton resources
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/159">
+            <span class="aep-id">159</span>
+            Reading across collections
+          </a>
+        </li>
+      <li class="nav-item"><b>Standard Methods</b></li>
+      <li class="nav-item">
+          <a href="/130">
+            <span class="aep-id">130</span>
+            Methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/131">
+            <span class="aep-id">131</span>
+            Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/132">
+            <span class="aep-id">132</span>
+            List
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/136">
+            <span class="aep-id">136</span>
+            Custom methods
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/133">
+            <span class="aep-id">133</span>
+            Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/134">
+            <span class="aep-id">134</span>
+            Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/135">
+            <span class="aep-id">135</span>
+            Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Fields</b></li>
+      <li class="nav-item">
+          <a href="/141">
+            <span class="aep-id">141</span>
+            Quantities
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/142">
+            <span class="aep-id">142</span>
+            Time and duration
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/144">
+            <span class="aep-id">144</span>
+            Array fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/145">
+            <span class="aep-id">145</span>
+            Ranges
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/140">
+            <span class="aep-id">140</span>
+            Field names
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/146">
+            <span class="aep-id">146</span>
+            Generic fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/148">
+            <span class="aep-id">148</span>
+            Standard fields
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/203">
+            <span class="aep-id">203</span>
+            Field behavior documentation
+          </a>
+        </li>
+      <li class="nav-item"><b>Types</b></li>
+      <li class="nav-item">
+          <a href="/210">
+            <span class="aep-id">210</span>
+            Unicode
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/143">
+            <span class="aep-id">143</span>
+            Standardized codes
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/213">
+            <span class="aep-id">213</span>
+            Common components
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/215">
+            <span class="aep-id">215</span>
+            Common component versions
+          </a>
+        </li>
+      <li class="nav-item"><b>Design Patterns</b></li>
+      <li class="nav-item">
+          <a href="/154">
+            <span class="aep-id">154</span>
+            Resource freshness validation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/158">
+            <span class="aep-id">158</span>
+            Pagination
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/151">
+            <span class="aep-id">151</span>
+            Long-running operations
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/164">
+            <span class="aep-id">164</span>
+            Soft delete
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/211">
+            <span class="aep-id">211</span>
+            Authorization checks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/157">
+            <span class="aep-id">157</span>
+            Partial responses
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/160">
+            <span class="aep-id">160</span>
+            Filtering
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/161">
+            <span class="aep-id">161</span>
+            Field masks
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/162">
+            <span class="aep-id">162</span>
+            Resource Revisions
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/193">
+            <span class="aep-id">193</span>
+            Errors
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/214">
+            <span class="aep-id">214</span>
+            Resource expiration
+          </a>
+        </li>
+      <li class="nav-item nav-item-active">
+          <a href="/216">
+            <span class="aep-id">216</span>
+            States
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/217">
+            <span class="aep-id">217</span>
+            Unreachable resources
+          </a>
+        </li>
+      <li class="nav-item"><b>Batch Methods</b></li>
+      <li class="nav-item">
+          <a href="/231">
+            <span class="aep-id">231</span>
+            Batch methods: Get
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/233">
+            <span class="aep-id">233</span>
+            Batch methods: Create
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/234">
+            <span class="aep-id">234</span>
+            Batch methods: Update
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/235">
+            <span class="aep-id">235</span>
+            Batch methods: Delete
+          </a>
+        </li>
+      <li class="nav-item"><b>Security</b></li>
+      <li class="nav-item"><b>Governance</b></li>
+      <li class="nav-item">
+          <a href="/100">
+            <span class="aep-id">100</span>
+            API Design Review FAQ
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/205">
+            <span class="aep-id">205</span>
+            Beta-blocking changes
+          </a>
+        </li>
+      <li class="nav-item"><b>Best Practices</b></li>
+      <li class="nav-item">
+          <a href="/180">
+            <span class="aep-id">180</span>
+            Backwards compatibility
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/181">
+            <span class="aep-id">181</span>
+            Stability levels
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/192">
+            <span class="aep-id">192</span>
+            Documentation
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/200">
+            <span class="aep-id">200</span>
+            Precedent
+          </a>
+        </li>
+      <li class="nav-item"><b>Protocol buffers</b></li>
+      <li class="nav-item">
+          <a href="/127">
+            <span class="aep-id">127</span>
+            HTTP and gRPC Transcoding
+          </a>
+        </li>
+      <li class="nav-item">
+          <a href="/191">
+            <span class="aep-id">191</span>
+            File and directory structure
+          </a>
+        </li>
+      </ul>
+</nav>
+<section id="jump-content">
+          
+<aside id="aep-sidebar" class="docs-component-sidebar">
+  <table id="aep-summary">
+    <tr><th colspan="2">States</th></tr>
+    <tr><td>Slug</td><td>states</td></tr>
+    <tr><td>Number</td><td>216</td></tr>
+    <tr><td>Permalink</td><td><a href="https://aep.dev/216">aep.dev/216</a></td></tr>
+    <tr><td>State</td><td>Approved</td></tr>
+    <tr><td>Created</td><td>2024-03-29</td></tr>
+    <tr><td>Updated</td><td>2024-03-29</td></tr>
+  </table>
+
+  <section id="aep-toc" class="docs-component-sidebar-toc">
+    <div class="toc"><span class="toctitle">Contents</span><ul>
+<li><a href="#guidance">Guidance</a><ul>
+<li><a href="#enum-values">Enum values</a></li>
+<li><a href="#output-only">Output only</a></li>
+<li><a href="#state-transition-methods">State transition methods</a></li>
+</ul>
+</li>
+<li><a href="#additional-guidance">Additional Guidance</a><ul>
+<li><a href="#value-uniqueness">Value uniqueness</a></li>
+<li><a href="#prefixes">Prefixes</a></li>
+<li><a href="#breaking-changes">Breaking changes</a></li>
+<li><a href="#when-to-avoid-states">When to avoid states</a></li>
+<li><a href="#common-states">Common states</a></li>
+</ul>
+</li>
+<li><a href="#further-reading">Further reading</a></li>
+</ul>
+</div>
+
+  </section>
+
+  <section class="docs-component-sidebar-actions">
+    <ul>
+      <li><a href="https://github.com/aep-dev/aep.dev/issues/">File Bug</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/blob/master/aep/general/0216">View source</a></li>
+      <li><a href="https://github.com/aep-dev/aep.dev/edit/master/aep/general/0216">Edit this page</a></li>
+    </ul>
+  </section>
+</aside>
+<section id="aep-main" class="docs-component-main">
+  <section class="section-breadcrumbs">
+  <nav
+    class="glue-breadcrumbs glue-mod-mt-std glue-mod-mb-std"
+    aria-label="You are here."
+  >
+    <ol class="glue-breadcrumbs__list aep-breadcrumbs">
+      <li class="glue-breadcrumbs__item" aria-level="1">
+        <a class="glue-breadcrumbs__link" href="/">
+          API Enhancement Proposals
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item" aria-level="2">
+        <a class="glue-breadcrumbs__link" href="/general">
+          General AEPs
+        </a>
+      </li>
+      
+      <li class="glue-breadcrumbs__item glue-breadcrumbs__item--active"
+          aria-level="3">
+        States
+      </li>
+    </ol>
+  </nav>
+</section>
+  
+  <h4 class="aep-id">states (AEP-216)</h4>
+  <h1 id="states">States</h1>
+<p>Many API resources carry a concept of "state": ordinarily, the resource's place
+in its lifecycle. For example, a virtual machine may be being provisioned,
+available for use, being spun down, or potentially be in one of several other
+situations. A job or query may be preparing to run, be actively running, have
+completed, and so on.</p>
+<h2 id="guidance">Guidance</h2>
+<p>Resources needing to communicate their state <strong>should</strong> use an enum, which
+<strong>should</strong> be called <code>State</code> (or, if more specificity is required, end in the
+word <code>State</code>). This enum <strong>should</strong> be nested within the message it describes
+when only used as a field within that message.</p>
+<p><strong>Important:</strong> We use the term <code>State</code>, and <em>not</em> <code>Status</code> (which is reserved
+for the HTTP and gRPC statuses).</p>
+<h3 id="enum-values">Enum values</h3>
+<p>Ideally, APIs use the same terminology throughout when expressing the same
+semantic concepts. There are usually many words available to express a given
+state, but our customers often use multiple APIs together, and it is easier for
+them when our terms are consistent.</p>
+<p>At a high level:</p>
+<ul>
+<li>Resources that are available for use are <code>ACTIVE</code> (preferred over terms such
+  as "ready" or "available").</li>
+<li>Resources that have completed a (usually terminal) requested action use past
+  participles (usually ending in <code>-ED</code>), such as <code>SUCCEEDED</code> (not
+  "successful"), <code>FAILED</code> (not "failure"), <code>DELETED</code>, <code>SUSPENDED</code>, and so on.</li>
+<li>Resources that are currently undergoing a state change use present
+  participles (usually ending in <code>-ING</code>), such as <code>RUNNING</code>, <code>CREATING</code>,
+  <code>DELETING</code>, and so on. In this case, it is expected that the state is
+  temporary and will resolve to another state on its own, with no further user
+  action.</li>
+</ul>
+<p><strong>Note:</strong> Only add states that are useful to customers. Exposing a
+large number of states simply because they exist in your internal system is
+unnecessary and adds confusion for customers. Each state <strong>must</strong> come with a
+use case for why it is necessary.</p>
+<h3 id="output-only">Output only</h3>
+<p>The field referencing the <code>State</code> enum in a resource <strong>must</strong> behave and be
+documented as "Output only", in accordance with
+<a href="./field-behavior-documentation">field behavior documentation</a>.</p>
+<p>APIs <strong>must not</strong> allow a <code>State</code> enum to be directly updated through an
+"update" method (or directly set through the "create" method), and <strong>must</strong>
+instead use custom state transition methods.</p>
+<p>This is because update methods are generally not expected to have side effects,
+and also because updating state directly implies that it is possible to set the
+state to any available value, whereas states generally reflect a resource's
+progression through a lifecycle.</p>
+<h3 id="state-transition-methods">State transition methods</h3>
+<p>State transition methods are a special type of
+<a href="./custom-methods">custom method</a> that are responsible for transitioning a
+state field from one enum value to another. As part of the transition, other
+fields may also change, e.g. an <code>update_time</code> field. In addition to the general
+guidance for custom methods on resources, the following guidance applies for
+method definitions:</p>
+<ul>
+<li>The name of the method <strong>should</strong> be a verb followed by the singular form of
+  the resource's message name.</li>
+<li>The HTTP verb <strong>must</strong> be <code>POST</code>.</li>
+</ul>
+<p>In addition to the general guidance for custom methods on resources, the
+following guidance applies for request definitions:</p>
+<ul>
+<li>A resource path field <strong>must</strong> be included. It <strong>should</strong> be called <code>path</code>.</li>
+<li>The comment for the field <strong>should</strong> document the resource pattern.</li>
+<li>Other fields <strong>may</strong> be included.</li>
+</ul>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Protocol buffers</label><div class="tabbed-content">
+<div class="highlight language-proto"><pre><span></span><code><span class="c1">// Publishes a book.</span>
+<span class="c1">// The `state` of the book after publishing is `PUBLISHED`.</span>
+<span class="c1">// `PublishBook` can be called on Books in the state `DRAFT`; Books in a</span>
+<span class="c1">// different state (including `PUBLISHED`) returns an error.</span>
+<span class="k">rpc</span><span class="w"> </span><span class="n">PublishBook</span><span class="p">(</span><span class="n">PublishBookRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">post</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;/v1/{path=publishers/*/books/*}:publish&quot;</span>
+<span class="w">    </span><span class="n">body</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>The request message <strong>must</strong> match the RPC name, with a <code>Request</code> suffix.</li>
+<li>The response message <strong>should</strong> be the resource itself.<ul>
+<li>If the RPC is <a href="./lro">long-running</a>, the response message <strong>should</strong> be an
+  <code>aep.api.Operation</code> which resolves to the resource itself.</li>
+</ul>
+</li>
+<li>The <code>body</code> clause in the <code>google.api.http</code> annotation <strong>must</strong> be <code>"*"</code>.</li>
+<li>The request message field receiving the resource path <strong>should</strong> map to the
+  URI path.<ul>
+<li>This field <strong>should</strong> be called <code>path</code>.</li>
+<li>The <code>path</code> field <strong>should</strong> be the only variable in the URI path. All
+  remaining parameters <strong>should</strong> map to URI query parameters.</li>
+</ul>
+</li>
+<li>If the state transition is not allowed, the service <strong>must</strong> error with
+  <code>FAILED_PRECONDITION</code> (HTTP 400).</li>
+</ul>
+<p>The request message should look like this:</p>
+<div class="highlight language-proto"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">PublishBookRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// The path of the book to publish.</span>
+<span class="w">  </span><span class="c1">// Format: publishers/{publisher}/books/{book}</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.field_behavior</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REQUIRED</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">google.api.resource_reference</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">type</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;library.example.com/Book&quot;</span>
+<span class="w">    </span><span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">OpenAPI 3.0</label><div class="tabbed-content">
+<p><strong>Note:</strong> OAS content not yet written.</p>
+</div>
+</div>
+<h2 id="additional-guidance">Additional Guidance</h2>
+<h3 id="value-uniqueness">Value uniqueness</h3>
+<p>Multiple top-level enums within the same package <strong>must</strong> not share the same
+values. This is because the C++ protoc code generator flattens top-level enum
+values into a single namespace.</p>
+<p>State enums <strong>should</strong> live inside the resource definition.</p>
+<h3 id="prefixes">Prefixes</h3>
+<p>Using a <code>STATE_</code> prefix on every enum value is unnecessary. State enum values
+<strong>should not</strong> be prefixed with the enum name, except for the default value
+<code>STATE_UNSPECIFIED</code>.</p>
+<h3 id="breaking-changes">Breaking changes</h3>
+<p><strong>TL;DR:</strong> Clearly communicate to users that state enums may receive new values
+in the future, and be conscientious about adding states to an existing enum.</p>
+<p>Even though adding states to an existing states enum <em>can</em> break existing user
+code, adding states is not considered a breaking change. Consider a state with
+only two values: <code>ACTIVE</code> and <code>DELETED</code>. A user may add code that checks
+<code>if state == ACTIVE</code>, and in the else cases simply assumes the resource is
+deleted. If the API later adds a new state for another purpose, that code will
+break.</p>
+<p>API documentation <strong>should</strong> actively encourage users to code against state
+enums with the expectation that they may receive new values in the future.</p>
+<p>APIs <strong>may</strong> add new states to an existing State enum when appropriate, and
+adding a new state is <em>not</em> considered a breaking change.</p>
+<h3 id="when-to-avoid-states">When to avoid states</h3>
+<p>Sometimes, a <code>State</code> enum may not be what is best for your API, particularly in
+situations where a state has a very small number of potential values, or when
+states are not mutually exclusive.</p>
+<p>Consider the example of a state with only <code>ACTIVE</code> and <code>DELETED</code>, as discussed
+above. In this situation, the API may be better off exposing a
+<code>google.protobuf.Timestamp delete_time</code>, and instructing users to rely on
+whether it is set to determine deletion.</p>
+<h3 id="common-states">Common states</h3>
+<p>The following is a list of states in common use. APIs <strong>should</strong> consider prior
+art when determining state names, and <strong>should</strong> value local consistency above
+global consistency in the case of conflicting precedent.</p>
+<h4 id="resting-states">Resting states</h4>
+<p>"Resting states" are lifecycle states that, absent user action, are expected to
+remain indefinitely. However, the user can initiate an action to move a
+resource in a resting state into certain other states (resting or active).</p>
+<ul>
+<li><code>ACCEPTED</code></li>
+<li><code>ACTIVE</code></li>
+<li><code>CANCELLED</code></li>
+<li><code>DELETED</code></li>
+<li><code>FAILED</code></li>
+<li><code>SUCCEEDED</code></li>
+<li><code>SUSPENDED</code></li>
+<li><code>VERIFIED</code></li>
+</ul>
+<h4 id="active-states">Active states</h4>
+<p>"Active states" are lifecycle states that typically resolve on their own into a
+single expected resting state.</p>
+<p><strong>Note:</strong> Remember only to expose states that are useful to customers. Active
+states are valuable only if the resource will be in that state for a sufficient
+period of time. If state changes are immediate, active states are not
+necessary.</p>
+<ul>
+<li><code>CREATING</code> (usually becomes <code>ACTIVE</code>)</li>
+<li><code>DELETING</code> (usually becomes <code>DELETED</code>)</li>
+<li><code>PENDING</code> (usually becomes <code>RUNNING</code>)</li>
+<li><code>REPAIRING</code> (usually becomes <code>ACTIVE</code>)</li>
+<li><code>RUNNING</code> (usually becomes <code>SUCCEEDED</code>)</li>
+<li><code>SUSPENDING</code> (usually becomes <code>SUSPENDED</code>)</li>
+</ul>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>For information on enums generally, see <a href="./enumerations">enumerations</a>.</li>
+</ul>
+  <footer>
+  Except as otherwise noted, the content of this page is licensed under the
+  <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+  Attribution 4.0 License</a>, and code samples are licensed under the
+  <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.
+  <span class="no-print">For details, see <a href="/licensing">content
+  licensing</a>.</span>
+</footer>
+</section>
+
+        </section>
+      </main>
+      
+    </div>
+    <script src="//www.gstatic.com/external_hosted/hammerjs/v2_0_2/hammer.min.js"></script>
+    <script src="//www.gstatic.com/glue/v22_1/glue-vanilla.min.js"></script>
+    <script type="text/javascript">
+      const headerElement = document.querySelector('.glue-header');
+      if (headerElement) {
+        new window.glue.ui.header.Header(headerElement);
+      }
+    </script>
+  </body>
+</html>
